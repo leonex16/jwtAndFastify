@@ -1,0 +1,25 @@
+@url = /users
+@uri = {{hostname}}{{version}}{{url}}
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNGEzOTkwMDhmODlhMzQ5ZTQ4MjhiNiIsImlhdCI6MTYzMjI1NzExMywiZXhwIjoxNjMyMzQzNTEzfQ.PQgZCaSEzU21xjT5jj8d3Qzb8JiE5Xj53zVF5EILE7g
+
+### GET ALL
+# @name users
+GET {{uri}} HTTP/1.1
+Content-Type: application/json
+
+### GET BY ID
+GET {{uri}}/{{users.response.body.$[0]._id}} HTTP/1.1
+Content-Type: application/json
+
+### UPDATE BY ID
+PUT {{uri}}/{{users.response.body.$[0]._id}} HTTP/1.1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "username": "userAdminUpdated"
+}
+
+### DELETE BY ID
+DELETE {{uri}}/{{users.response.body.$[0]._id}} HTTP/1.1
+Content-Type: application/json
